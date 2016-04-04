@@ -36,4 +36,20 @@ call printf
 addl $4 %esp
 
 
+I -> E
+E.code
+pushl $chaine 
+call printf
+add $4 %esp
+
+E -> E1 + T
+code E1 (haut de la pile)
+code T (au dessus de E1)
+popl %eax
+popl %ecx
+addl %eax %eax
+pushl %eax
+
+
+
 
