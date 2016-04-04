@@ -1,9 +1,12 @@
-flex Ainsi-c.l
+﻿flex Ainsi-c.l
 bison -d cfe.y
 gcc .c .c -o nom -ll
 il faut créer un make file
 
-
+sources :
+-http://www.gaudry.be/langages-lsd10-source-rf-project/source/ast.c.html
+-http://www.cs.virginia.edu/~jch8f/research/bdc/cgram.html
+-http://foja.dcs.fmph.uniba.sk/kompilatory/docs/compiler.pdf
 
 /***COURS****/
 %eax + %ecx -> %eax

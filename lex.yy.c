@@ -514,7 +514,7 @@ char *yytext;
 #line 4 "ANSI-C.l"
 #include <stdio.h>
 #include "cfe.tab.h"
-#include hash.h
+#include "sym.h"
 
 
 
