@@ -1,15 +1,10 @@
 %{
 	#include <stdio.h>
 	#include <stdlib.h>
-	#include <sym.h>
 	
 %}
-%union{
-	int val;
-	symbole *var;
-}
-%token <var> IDENTIFICATEUR
-%token <val> CONSTANTE
+%token IDENTIFICATEUR
+%token CONSTANTE
 %token VOID INT FOR WHILE IF ELSE SWITCH CASE DEFAULT 
 %token BREAK RETURN PLUS MOINS MUL DIV LSHIFT RSHIFT BAND BOR LAND LOR LT GT 
 %token GEQ LEQ EQ NEQ NOT EXTERN 
@@ -20,14 +15,13 @@
 %left LAND LOR
 %nonassoc THEN
 %nonassoc ELSE
+%left OP
 %left REL
-%type <val> programme
-%type <val> affectation
 %start programme
 
 %%
 programme	:	
-		liste_declarations liste_fonctions {printf("resultat : %d\n",$$);}
+		liste_declarations liste_fonctions
 ;
 liste_declarations	:	
 		liste_declarations declaration 
@@ -61,7 +55,7 @@ l_parm 		:
 	|	parm
 ;
 parm		:
-		INT IDENTIFICATEUR
+		INT IDENTIFICATEUR 
 ;
 type		:	
 		VOID
@@ -96,13 +90,13 @@ saut	:
 	|	RETURN expression ';'
 ;
 affectation	:	
-		variable '=' expression 	
+		variable '=' expression	
 ;
 bloc	:	
 		'{' liste_declarations liste_instructions '}'	
 ;
 appel	:	
-		IDENTIFICATEUR '(' liste_expressions ')' ';'
+		IDENTIFICATEUR '(' expression ')' ';'
 ;
 variable	:	
 		IDENTIFICATEUR
@@ -110,36 +104,44 @@ variable	:
 ;
 expression	:	
 		'(' expression ')'
+	|	expression binary_op expression %prec OP
 	|	MOINS expression
 	|	CONSTANTE
 	|	variable
-	|	IDENTIFICATEUR '(' expression ')'
-	|	expression PLUS expression 	{$$ = $1+ $2;}
-	|	expression MOINS expression 	{$$ =$1 - $2;}
-	|	expression MUL expression 	{$$ = $1 * $2;}
-	|	expression DIV expression	{$$ = $1 / $2;}
-	|	expression LSHIFT expression	
-	|	expression RSHIFT
-	|	expression BAND expression
-	|	expression BOR expression
-	|	expression
-	|	expression ',' expression
+	|	IDENTIFICATEUR '(' liste_expressions ')'
+;
+liste_expressions	:	
+		liste_expressions ',' expression
 	|	%empty
-	
 ;
 condition	:	
 		NOT '(' condition ')'
-	|	condition LAND condition
-	|	condition LOR
+	|	condition binary_rel condition %prec REL
 	|	'(' condition ')'
 	|	expression binary_comp expression
-	|	condition LT condition
-	|	condition GT condition
-	|	condition GEQ condition
-	|	condition LEQ condition
-	|	condition EQ condition
-	|	condition NEQ condition
 ;
+binary_op	:	
+		PLUS
+	|       MOINS
+	|	MUL
+	|	DIV
+	|       LSHIFT
+	|       RSHIFT
+	|	BAND
+	|	BOR
+;
+binary_rel	:	
+		LAND
+	|	LOR
+;
+binary_comp	:	
+		LT
+	|	GT
+	|	GEQ
+	|	LEQ
+	|	EQ
+	|	NEQ
+
 %%
 
 yyerror( char *s){

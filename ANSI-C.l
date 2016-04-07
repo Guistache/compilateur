@@ -3,7 +3,6 @@
 %{
 #include <stdio.h>
 #include "cfe.tab.h"
-#include "sym.h"
 
 
 
@@ -35,8 +34,8 @@ CONSTANTE		{D}+
 "switch"                {return SWITCH;}
 "void"                  {return VOID;}
 "while"                 {return WHILE;}
-{CONSTANTE}            	{yyval.val = atof(yytext);return CONSTANTE;}
-{IDENTIFICATEUR}	{yyval.var = yytext[0] -'a';return IDENTIFICATEUR; }
+{CONSTANTE}            	{return CONSTANTE;}
+{IDENTIFICATEUR}	{return IDENTIFICATEUR; }
 
 "+"                    	{return PLUS;}
 "-"                    	{return MOINS;}
