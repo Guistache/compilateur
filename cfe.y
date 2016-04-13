@@ -1,10 +1,16 @@
 %{
 	#include <stdio.h>
 	#include <stdlib.h>
+	#include "sym.h"
 	
 %}
-%token IDENTIFICATEUR
-%token CONSTANTE
+%union {
+	char *name;
+	type_t type;
+	int entier;
+}
+%token <name>IDENTIFICATEUR
+%token <entier>CONSTANTE
 %token VOID INT FOR WHILE IF ELSE SWITCH CASE DEFAULT 
 %token BREAK RETURN PLUS MOINS MUL DIV LSHIFT RSHIFT BAND BOR LAND LOR LT GT 
 %token GEQ LEQ EQ NEQ NOT EXTERN 

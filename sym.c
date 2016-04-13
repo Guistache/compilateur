@@ -1,8 +1,12 @@
-#include "sym.h"
+#include <sym.h>
+typedef enum {INT,VOID} type_t;
 typedef struct symbole{
     char *nom;
+    type_t type;
+    int taille;
     int valeur;
-    struc symbole *suivant;
+    int position;
+    struct symbole *suivant;
 }
 
 #define TAILLE 103

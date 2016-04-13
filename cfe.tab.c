@@ -66,9 +66,10 @@
 
 	#include <stdio.h>
 	#include <stdlib.h>
+	#include "sym.h"
 	
 
-#line 72 "cfe.tab.c" /* yacc.c:339  */
+#line 73 "cfe.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -142,7 +143,19 @@ extern int yydebug;
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+
+union YYSTYPE
+{
+#line 7 "cfe.y" /* yacc.c:355  */
+
+	char *name;
+	type_t type;
+	int entier;
+
+#line 156 "cfe.tab.c" /* yacc.c:355  */
+};
+
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif
@@ -156,7 +169,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 160 "cfe.tab.c" /* yacc.c:358  */
+#line 173 "cfe.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -457,14 +470,14 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    24,    24,    27,    28,    31,    32,    35,    38,    39,
-      42,    43,    46,    47,    50,    51,    54,    55,    58,    61,
-      62,    65,    66,    69,    70,    71,    72,    73,    74,    77,
-      78,    81,    82,    83,    84,    85,    88,    89,    90,    93,
-      96,    99,   102,   103,   106,   107,   108,   109,   110,   111,
-     114,   115,   118,   119,   120,   121,   124,   125,   126,   127,
-     128,   129,   130,   131,   134,   135,   138,   139,   140,   141,
-     142,   143
+       0,    30,    30,    33,    34,    37,    38,    41,    44,    45,
+      48,    49,    52,    53,    56,    57,    60,    61,    64,    67,
+      68,    71,    72,    75,    76,    77,    78,    79,    80,    83,
+      84,    87,    88,    89,    90,    91,    94,    95,    96,    99,
+     102,   105,   108,   109,   112,   113,   114,   115,   116,   117,
+     120,   121,   124,   125,   126,   127,   130,   131,   132,   133,
+     134,   135,   136,   137,   140,   141,   144,   145,   146,   147,
+     148,   149
 };
 #endif
 
@@ -1350,7 +1363,7 @@ yyreduce:
   switch (yyn)
     {
       
-#line 1354 "cfe.tab.c" /* yacc.c:1646  */
+#line 1367 "cfe.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1578,7 +1591,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 145 "cfe.y" /* yacc.c:1906  */
+#line 151 "cfe.y" /* yacc.c:1906  */
 
 
 yyerror( char *s){
