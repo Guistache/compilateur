@@ -1,13 +1,9 @@
 
-
 %{
-#include <stdio.h>
-#include "cfe.tab.h"
-
-
-
-
-
+	#include <stdio.h>
+	#include "cfe.tab.h"
+	#include <string.h>
+	#include <stdlib.h>
 /* Ne gère pas les commentaires. A rajouter */
 /* Supprimer les lignes dont vous n'avez pas besoin. */
 
@@ -34,8 +30,8 @@ CONSTANTE		{D}+
 "switch"                {return SWITCH;}
 "void"                  {return VOID;}
 "while"                 {return WHILE;}
-{CONSTANTE}            	{return CONSTANTE;}
-{IDENTIFICATEUR}	{return IDENTIFICATEUR; }
+{CONSTANTE}            	{yylval.intval = atoi(yytext);return CONSTANTE;}
+{IDENTIFICATEUR}	{yylval.id = (char *)strdup(yytext);return IDENTIFICATEUR; }
 
 "+"                    	{return PLUS;}
 "-"                    	{return MOINS;}
@@ -65,7 +61,8 @@ CONSTANTE		{D}+
 ":"			{return ':';}
 "/*"			{comment();}
 [ \t\v\n\f]             { ;}
-.                       {fprintf(stderr,"erreur lexicale\n");}
+.                       {}
+
 %%
 
 comment()
@@ -82,14 +79,4 @@ loop:
 		goto loop;
 	}
 
-	if (c != 0)
-		putchar(c1);
 }
-
-yywrap()
-{
-	fprintf(stderr,"lexique\n");
-	return(1);
-}
-
-

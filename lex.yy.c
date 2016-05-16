@@ -511,19 +511,16 @@ int yy_flex_debug = 0;
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
 #line 1 "ANSI-C.l"
-#line 4 "ANSI-C.l"
-#include <stdio.h>
-#include "cfe.tab.h"
-
-
-
-
-
+#line 3 "ANSI-C.l"
+	#include <stdio.h>
+	#include "cfe.tab.h"
+	#include <string.h>
+	#include <stdlib.h>
 /* Ne gère pas les commentaires. A rajouter */
 /* Supprimer les lignes dont vous n'avez pas besoin. */
 
 
-#line 527 "lex.yy.c"
+#line 524 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -732,9 +729,9 @@ YY_DECL
 		}
 
 	{
-#line 23 "ANSI-C.l"
+#line 19 "ANSI-C.l"
 
-#line 738 "lex.yy.c"
+#line 735 "lex.yy.c"
 
 	while ( 1 )		/* loops until end-of-file is reached */
 		{
@@ -793,231 +790,231 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 24 "ANSI-C.l"
+#line 20 "ANSI-C.l"
 {return BREAK;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 25 "ANSI-C.l"
+#line 21 "ANSI-C.l"
 {return CASE;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 26 "ANSI-C.l"
+#line 22 "ANSI-C.l"
 {return DEFAULT;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 27 "ANSI-C.l"
+#line 23 "ANSI-C.l"
 {return ELSE;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 28 "ANSI-C.l"
+#line 24 "ANSI-C.l"
 {return EXTERN;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 29 "ANSI-C.l"
+#line 25 "ANSI-C.l"
 {return FOR;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 30 "ANSI-C.l"
+#line 26 "ANSI-C.l"
 {return IF;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 31 "ANSI-C.l"
+#line 27 "ANSI-C.l"
 {return INT;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 32 "ANSI-C.l"
+#line 28 "ANSI-C.l"
 {return RETURN;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 33 "ANSI-C.l"
+#line 29 "ANSI-C.l"
 {return THEN;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 34 "ANSI-C.l"
+#line 30 "ANSI-C.l"
 {return SWITCH;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 35 "ANSI-C.l"
+#line 31 "ANSI-C.l"
 {return VOID;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 36 "ANSI-C.l"
+#line 32 "ANSI-C.l"
 {return WHILE;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 37 "ANSI-C.l"
-{return CONSTANTE;}
+#line 33 "ANSI-C.l"
+{yylval.intval = atoi(yytext);return CONSTANTE;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 38 "ANSI-C.l"
-{return IDENTIFICATEUR; }
+#line 34 "ANSI-C.l"
+{yylval.id = (char *)strdup(yytext);return IDENTIFICATEUR; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 40 "ANSI-C.l"
+#line 36 "ANSI-C.l"
 {return PLUS;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 41 "ANSI-C.l"
+#line 37 "ANSI-C.l"
 {return MOINS;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 42 "ANSI-C.l"
+#line 38 "ANSI-C.l"
 {return MUL;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 43 "ANSI-C.l"
+#line 39 "ANSI-C.l"
 {return DIV;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 44 "ANSI-C.l"
+#line 40 "ANSI-C.l"
 {return BAND;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 45 "ANSI-C.l"
+#line 41 "ANSI-C.l"
 {return BOR;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 46 "ANSI-C.l"
+#line 42 "ANSI-C.l"
 {return LSHIFT;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 47 "ANSI-C.l"
+#line 43 "ANSI-C.l"
 {return RSHIFT;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 48 "ANSI-C.l"
+#line 44 "ANSI-C.l"
 {return LAND;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 49 "ANSI-C.l"
+#line 45 "ANSI-C.l"
 {return LOR;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 50 "ANSI-C.l"
+#line 46 "ANSI-C.l"
 {return LT;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 51 "ANSI-C.l"
+#line 47 "ANSI-C.l"
 {return GT;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 52 "ANSI-C.l"
+#line 48 "ANSI-C.l"
 {return LEQ;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 53 "ANSI-C.l"
+#line 49 "ANSI-C.l"
 {return GEQ;}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 54 "ANSI-C.l"
+#line 50 "ANSI-C.l"
 {return EQ;}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 55 "ANSI-C.l"
+#line 51 "ANSI-C.l"
 {return NEQ;}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 56 "ANSI-C.l"
+#line 52 "ANSI-C.l"
 {return '=';}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 57 "ANSI-C.l"
+#line 53 "ANSI-C.l"
 {return ';';}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 58 "ANSI-C.l"
+#line 54 "ANSI-C.l"
 {return ',';}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 59 "ANSI-C.l"
+#line 55 "ANSI-C.l"
 {return '(';}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 60 "ANSI-C.l"
+#line 56 "ANSI-C.l"
 {return ')';}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 61 "ANSI-C.l"
+#line 57 "ANSI-C.l"
 {return('{'); }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 62 "ANSI-C.l"
+#line 58 "ANSI-C.l"
 {return('}'); }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 63 "ANSI-C.l"
+#line 59 "ANSI-C.l"
 {return '[';}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 64 "ANSI-C.l"
+#line 60 "ANSI-C.l"
 {return ']';}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 65 "ANSI-C.l"
+#line 61 "ANSI-C.l"
 {return ':';}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 66 "ANSI-C.l"
+#line 62 "ANSI-C.l"
 {comment();}
 	YY_BREAK
 case 43:
 /* rule 43 can match eol */
 YY_RULE_SETUP
-#line 67 "ANSI-C.l"
+#line 63 "ANSI-C.l"
 { ;}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 68 "ANSI-C.l"
-{fprintf(stderr,"erreur lexicale\n");}
+#line 64 "ANSI-C.l"
+{}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 69 "ANSI-C.l"
+#line 66 "ANSI-C.l"
 ECHO;
 	YY_BREAK
-#line 1021 "lex.yy.c"
+#line 1018 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2012,7 +2009,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 69 "ANSI-C.l"
+#line 66 "ANSI-C.l"
 
 
 
@@ -2030,15 +2027,4 @@ loop:
 		goto loop;
 	}
 
-	if (c != 0)
-		putchar(c1);
 }
-
-yywrap()
-{
-	fprintf(stderr,"lexique\n");
-	return(1);
-}
-
-
-
