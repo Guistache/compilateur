@@ -1,3 +1,4 @@
+
 #include "sym.h"
 typedef struct symbole{
     char *nom;
@@ -50,4 +51,3 @@ symbole *inserer(char *nom){
     s->suivant = NULL;
     return s;
 }
-#endif // HASH

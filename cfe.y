@@ -135,12 +135,12 @@ binary_rel	:
 	|	LOR
 ;
 binary_comp	:	
-		LT
-	|	GT
-	|	GEQ
-	|	LEQ
-	|	EQ
-	|	NEQ
+    LT {$$ = "<";}
+	|	GT {$$ = ">";}
+	|	GEQ {$$ = ">=";}
+	|	LEQ {$$ = "<=";}
+	|	EQ {$$ = "==";}
+	|	NEQ {$$ = "!=";}
 
 %%
 

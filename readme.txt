@@ -1,4 +1,4 @@
-﻿flex Ainsi-c.l
+flex Ainsi-c.l
 bison -d cfe.y
 gcc .c .c -o nom -ll
 il faut créer un make file
@@ -39,7 +39,7 @@ call printf
 addl $4 %esp
 
 
-I -> E
+I -> E (quand on appel E, le résultat est dans ex
 E.code
 pushl $chaine 
 call printf
@@ -52,6 +52,33 @@ popl %eax
 popl %ecx
 addl %eax %eax
 pushl %eax
+
+I -> ident = E
+E.code
+movl %eax ident.nom
+pushl %eax
+pushl %eax
+pushl $chaine -> (%d)
+call printf
+add $4 %esp
+popl %eax
+
+I-> E
+E.code
+pushl %eax
+pushl $chaine
+call printf
+addl $4 %esp
+popl %eax
+E -> E1 + T
+E1.code
+pushl %eax
+T.code
+popl %ecx (val E1)
+addl %ecx %eax
+
+de meme pour - * /
+le reste ne change pas.
 
 
 
