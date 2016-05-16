@@ -66,10 +66,11 @@
 
 	#include <stdio.h>
 	#include <stdlib.h>
+	#include <string.h>
 	#include "sym.h"
 	
 
-#line 73 "cfe.tab.c" /* yacc.c:339  */
+#line 74 "cfe.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -146,11 +147,10 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 7 "cfe.y" /* yacc.c:355  */
+#line 8 "cfe.y" /* yacc.c:355  */
 
-	char *name;
-	type_t type;
-	int entier;
+	int intval;
+	char *id;
 
 #line 156 "cfe.tab.c" /* yacc.c:355  */
 };
@@ -1362,8 +1362,14 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-      
-#line 1367 "cfe.tab.c" /* yacc.c:1646  */
+        case 10:
+#line 48 "cfe.y" /* yacc.c:1646  */
+    {Ajout((yyvsp[0].id));}
+#line 1369 "cfe.tab.c" /* yacc.c:1646  */
+    break;
+
+
+#line 1373 "cfe.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires

@@ -1,16 +1,16 @@
 %{
 	#include <stdio.h>
 	#include <stdlib.h>
+	#include <string.h>
 	#include "sym.h"
 	
 %}
-%union {
-	char *name;
-	type_t type;
-	int entier;
+%union{
+	int intval;
+	char *id;
 }
-%token <name>IDENTIFICATEUR
-%token <entier>CONSTANTE
+%token <id> IDENTIFICATEUR
+%token <intval> CONSTANTE
 %token VOID INT FOR WHILE IF ELSE SWITCH CASE DEFAULT 
 %token BREAK RETURN PLUS MOINS MUL DIV LSHIFT RSHIFT BAND BOR LAND LOR LT GT 
 %token GEQ LEQ EQ NEQ NOT EXTERN 
@@ -41,11 +41,11 @@ declaration	:
 		type liste_declarateurs ';'
 ;
 liste_declarateurs	:	
-		liste_declarateurs ',' declarateur
+		liste_declarateurs ',' declarateur	
 	|	declarateur
 ;
 declarateur	:	
-		IDENTIFICATEUR
+		IDENTIFICATEUR	{Ajout($1);}
 	|	declarateur '[' CONSTANTE ']'
 ;
 fonction	:	

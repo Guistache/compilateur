@@ -87,13 +87,12 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 7 "cfe.y" /* yacc.c:1909  */
+#line 8 "cfe.y" /* yacc.c:1909  */
 
-	char *name;
-	type_t type;
-	int entier;
+	int intval;
+	char *id;
 
-#line 97 "cfe.tab.h" /* yacc.c:1909  */
+#line 96 "cfe.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
